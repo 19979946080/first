@@ -110,6 +110,8 @@ let tools = [];
 let activeFilter = "all";
 let favorites = readJson(storageKeys.favorites, []);
 let toolViews = readJson(storageKeys.toolViews, {});
+let activeTutorialId = "";
+let favoriteMessageTimer;
 
 if (savedTheme === "dark") {
   root.dataset.theme = "dark";
@@ -178,11 +180,37 @@ const emptyState = document.querySelector("[data-empty-state]");
 const favoriteCount = document.querySelector("[data-favorite-count]");
 const visitCount = document.querySelector("[data-visit-count]");
 const totalTools = document.querySelector("[data-total-tools]");
+const tutorialList = document.querySelector("[data-tutorial-list]");
+const tutorialDetail = document.querySelector("[data-tutorial-detail]");
+const popularTools = document.querySelector("[data-popular-tools]");
+const exportFavoritesButton = document.querySelector("[data-export-favorites]");
+const importFavoritesButton = document.querySelector("[data-import-favorites]");
+const importFavoritesFile = document.querySelector("[data-import-favorites-file]");
+const favoriteMessage = document.querySelector("[data-favorite-message]");
+
+function showFavoriteMessage(message) {
+  if (!favoriteMessage) return;
+  favoriteMessage.textContent = message;
+  window.clearTimeout(favoriteMessageTimer);
+  favoriteMessageTimer = window.setTimeout(() => {
+    favoriteMessage.textContent = "";
+  }, 3200);
+}
+
+function updateToolViewLabels(toolId) {
+  document.querySelectorAll("[data-view-count]").forEach((node) => {
+    if (node.dataset.viewCount === toolId) {
+      node.textContent = String(toolViews[toolId] || 0);
+    }
+  });
+}
 
 function trackToolView(toolId) {
   if (!toolId) return;
   toolViews[toolId] = (toolViews[toolId] || 0) + 1;
   writeJson(storageKeys.toolViews, toolViews);
+  updateToolViewLabels(toolId);
+  renderPopularTools();
 }
 
 function openModal(key, toolId) {
@@ -212,6 +240,13 @@ document.addEventListener("click", (event) => {
   const favoriteButton = event.target.closest("[data-favorite-toggle]");
   if (favoriteButton) {
     toggleFavorite(favoriteButton.dataset.favoriteToggle);
+  }
+
+  const tutorialButton = event.target.closest("[data-tutorial-select]");
+  if (tutorialButton) {
+    activeTutorialId = tutorialButton.dataset.tutorialSelect || activeTutorialId;
+    trackToolView(activeTutorialId);
+    renderTutorials();
   }
 });
 
@@ -243,6 +278,7 @@ function toggleFavorite(toolId) {
   writeJson(storageKeys.favorites, favorites);
   renderTools();
   applyToolFilters();
+  showFavoriteMessage(next.has(toolId) ? "已加入收藏。" : "已取消收藏。");
 }
 
 function renderTools() {
@@ -270,7 +306,7 @@ function renderTools() {
             <span>推荐 ${ratingStars(tool.rating)}</span>
             <span>难度 ${escapeHtml(tool.difficulty)}</span>
             <span>适合 ${escapeHtml(tool.audience)}</span>
-            <span>本机查看 ${toolViews[tool.id] || 0} 次</span>
+            <span>本机查看 <span class="view-count" data-view-count="${escapeHtml(tool.id)}">${toolViews[tool.id] || 0}</span> 次</span>
           </div>
           <div class="inline-actions">
             <button class="button secondary compact" type="button" data-modal="${escapeHtml(tool.detailModal)}" data-track-tool="${escapeHtml(tool.id)}">详情</button>
@@ -302,6 +338,143 @@ function renderDownloads() {
       `;
     })
     .join("");
+}
+
+function getGuideData(tool) {
+  return modalData[tool.guideModal] || {
+    kicker: "安装教程",
+    title: `${tool.name} 新手教程`,
+    body: tool.summary,
+    points: ["打开官网或文档", "下载适合自己系统的版本", "按官方说明完成安装", "回到工具库记录使用体验"],
+  };
+}
+
+function renderTutorials() {
+  if (!tutorialList || !tutorialDetail) return;
+  if (!tools.length) {
+    tutorialList.innerHTML = "";
+    tutorialDetail.innerHTML = '<p class="empty-state">教程数据加载中。</p>';
+    return;
+  }
+
+  const selectedTool = tools.find((tool) => tool.id === activeTutorialId) || tools[0];
+  activeTutorialId = selectedTool.id;
+  const guide = getGuideData(selectedTool);
+  const primaryLink = selectedTool.links?.[0];
+
+  tutorialList.innerHTML = tools
+    .map((tool) => {
+      const isActive = tool.id === activeTutorialId;
+      return `
+        <button class="tutorial-tab${isActive ? " is-active" : ""}" type="button" data-tutorial-select="${escapeHtml(tool.id)}" aria-pressed="${String(isActive)}">
+          <span>${escapeHtml(tool.categoryLabel)}</span>
+          <strong>${escapeHtml(tool.name)}</strong>
+        </button>
+      `;
+    })
+    .join("");
+
+  tutorialDetail.innerHTML = `
+    <p class="eyebrow">${escapeHtml(guide.kicker)}</p>
+    <h3>${escapeHtml(guide.title)}</h3>
+    <p>${escapeHtml(guide.body)}</p>
+    <ol class="tutorial-steps">
+      ${guide.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}
+    </ol>
+    <div class="tutorial-meta">
+      <span>难度：${escapeHtml(selectedTool.difficulty)}</span>
+      <span>适合：${escapeHtml(selectedTool.audience)}</span>
+      <span>本机查看：<span class="view-count" data-view-count="${escapeHtml(selectedTool.id)}">${toolViews[selectedTool.id] || 0}</span> 次</span>
+    </div>
+    <div class="inline-actions">
+      <button class="button primary compact" type="button" data-modal="${escapeHtml(selectedTool.guideModal)}" data-track-tool="${escapeHtml(selectedTool.id)}">打开教程弹窗</button>
+      ${
+        primaryLink
+          ? `<a class="button secondary compact" href="${escapeHtml(primaryLink.url)}" target="_blank" rel="noreferrer">访问${escapeHtml(primaryLink.label)}</a>`
+          : ""
+      }
+    </div>
+  `;
+}
+
+function renderPopularTools() {
+  if (!popularTools) return;
+  const rankedTools = [...tools]
+    .map((tool) => ({ ...tool, views: toolViews[tool.id] || 0 }))
+    .sort((a, b) => b.views - a.views || b.rating - a.rating || a.name.localeCompare(b.name, "zh-CN"))
+    .slice(0, 5);
+
+  if (!rankedTools.length) {
+    popularTools.innerHTML = '<p class="empty-state">工具数据加载中。</p>';
+    return;
+  }
+
+  const hasViews = rankedTools.some((tool) => tool.views > 0);
+  popularTools.innerHTML = `
+    ${!hasViews ? '<p class="popular-note">还没有查看记录，先点几个工具详情或教程，排行会自动变化。</p>' : ""}
+    ${rankedTools
+      .map(
+        (tool, index) => `
+          <article class="popular-row">
+            <span class="popular-rank">${String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <strong>${escapeHtml(tool.name)}</strong>
+              <span>${escapeHtml(tool.categoryLabel)} · 推荐 ${ratingStars(tool.rating)} · 查看 <span class="view-count" data-view-count="${escapeHtml(tool.id)}">${tool.views}</span> 次</span>
+            </div>
+            <button class="button secondary compact" type="button" data-modal="${escapeHtml(tool.detailModal)}" data-track-tool="${escapeHtml(tool.id)}">详情</button>
+          </article>
+        `,
+      )
+      .join("")}
+  `;
+}
+
+function exportFavorites() {
+  const favoriteSet = new Set(favorites);
+  const favoriteTools = tools
+    .filter((tool) => favoriteSet.has(tool.id))
+    .map((tool) => ({
+      id: tool.id,
+      name: tool.name,
+      category: tool.category,
+      summary: tool.summary,
+    }));
+  const payload = {
+    app: "Local Tool Showcase",
+    exportedAt: new Date().toISOString(),
+    favorites,
+    tools: favoriteTools,
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "tool-favorites.json";
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(link.href);
+  showFavoriteMessage(favorites.length ? `已导出 ${favorites.length} 个收藏。` : "当前没有收藏，也已导出空收藏文件。");
+}
+
+function importFavorites(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    try {
+      const data = JSON.parse(String(reader.result || "{}"));
+      const imported = Array.isArray(data) ? data : data.favorites;
+      if (!Array.isArray(imported)) throw new Error("favorites not found");
+      const validIds = new Set(tools.map((tool) => tool.id));
+      favorites = Array.from(new Set(imported.filter((id) => validIds.has(id))));
+      writeJson(storageKeys.favorites, favorites);
+      renderTools();
+      applyToolFilters();
+      showFavoriteMessage(`已导入 ${favorites.length} 个有效收藏。`);
+    } catch {
+      showFavoriteMessage("导入失败，请选择之前导出的 JSON 文件。");
+    }
+  });
+  reader.readAsText(file, "utf-8");
 }
 
 function applyToolFilters() {
@@ -342,6 +515,17 @@ filterButtons.forEach((button) => {
   });
 });
 
+exportFavoritesButton?.addEventListener("click", exportFavorites);
+
+importFavoritesButton?.addEventListener("click", () => {
+  importFavoritesFile?.click();
+});
+
+importFavoritesFile?.addEventListener("change", () => {
+  importFavorites(importFavoritesFile.files?.[0]);
+  importFavoritesFile.value = "";
+});
+
 async function loadTools() {
   try {
     const response = await fetch("./tools.json");
@@ -356,8 +540,11 @@ async function loadTools() {
   }
 
   if (totalTools) totalTools.textContent = `${tools.length} 个`;
+  if (!activeTutorialId && tools[0]) activeTutorialId = tools[0].id;
   renderTools();
   renderDownloads();
+  renderTutorials();
+  renderPopularTools();
   applyToolFilters();
 }
 

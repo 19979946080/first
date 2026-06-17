@@ -8,6 +8,7 @@
       content="一个介绍 LocalSend、Stirling PDF、RustDesk、Ollama、Open WebUI 等实用开源工具的中文工具导航站。"
     />
     <title>LocalSend & Stirling PDF 工具展示站</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -20,6 +21,8 @@
         <a href="#products">主工具</a>
         <a href="#tool-library">工具库</a>
         <a href="#guide">安装教程</a>
+        <a href="#tutorials">教程详情</a>
+        <a href="#popular">热门排行</a>
         <a href="#downloads">下载入口</a>
       </nav>
       <button class="theme-toggle" type="button" aria-label="切换深色模式" data-theme-toggle>
@@ -182,6 +185,12 @@
               <p class="library-meta">本机访问 <span data-visit-count>0</span> 次</p>
               <p class="library-meta">已收藏 <span data-favorite-count>0</span> 个</p>
             </div>
+            <div class="library-actions" aria-label="收藏数据操作">
+              <button class="button secondary compact" type="button" data-export-favorites>导出收藏</button>
+              <button class="button secondary compact" type="button" data-import-favorites>导入收藏</button>
+              <input type="file" accept="application/json,.json" data-import-favorites-file hidden />
+              <p class="library-message" data-favorite-message role="status" aria-live="polite"></p>
+            </div>
           </div>
 
           <div class="library-grid" data-tool-grid aria-live="polite"></div>
@@ -246,6 +255,35 @@
         </div>
       </section>
 
+      <section class="section tutorials" id="tutorials">
+        <div class="section-heading">
+          <p class="eyebrow">教程详情页</p>
+          <h2>把每个工具的安装和使用路径拆成更清楚的教程卡片</h2>
+        </div>
+        <div class="tutorial-layout">
+          <div class="tutorial-list" data-tutorial-list aria-label="教程列表"></div>
+          <article class="tutorial-detail" data-tutorial-detail aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="section popular" id="popular">
+        <div class="section-heading">
+          <p class="eyebrow">热门工具排行</p>
+          <h2>根据你在本机查看详情和教程的次数自动生成排行</h2>
+        </div>
+        <div class="popular-layout">
+          <div class="popular-panel" data-popular-tools></div>
+          <div class="admin-panel">
+            <p class="eyebrow">轻量维护面板</p>
+            <h3>静态站也能方便维护</h3>
+            <p>
+              这个网站的数据已经拆到 tools.json。后续新增工具时，只需要复制一条工具数据，补上名称、分类、简介、链接和教程弹窗编号，就能自动出现在工具库、下载入口、教程详情和排行相关区域。
+            </p>
+            <a class="button secondary compact" href="./tools.json" target="_blank" rel="noreferrer">查看工具数据</a>
+          </div>
+        </div>
+      </section>
+
       <section class="section downloads" id="downloads">
         <div class="section-heading">
           <p class="eyebrow">下载与项目入口</p>
@@ -259,8 +297,8 @@
           <p class="eyebrow">作品集方向</p>
           <h2>现在它更像一个真正可用的工具库项目</h2>
           <p>
-            工具数据已经拆到 JSON 文件，页面支持搜索筛选、收藏、本机访问统计、推荐评分、难度标签、下载入口和安装教程弹窗。
-            后续可以继续加教程详情页、收藏导出、热门工具排行或后台管理。
+            工具数据已经拆到 JSON 文件，页面支持搜索筛选、收藏、收藏导出导入、本机访问统计、热门工具排行、推荐评分、难度标签、下载入口、教程详情和安装教程弹窗。
+            后续可以继续增加独立工具文章、截图轮播、真实后台管理或更多实用工具分类。
           </p>
         </div>
       </section>

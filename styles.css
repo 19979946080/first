@@ -627,6 +627,21 @@ h3 {
   gap: 14px;
 }
 
+.library-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.library-message {
+  min-height: 22px;
+  margin: 0;
+  color: var(--teal-dark);
+  font-size: 14px;
+  font-weight: 800;
+}
+
 .library-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -721,6 +736,19 @@ h3 {
   font-weight: 800;
 }
 
+.tool-meta .view-count,
+.tutorial-meta .view-count,
+.popular-row .view-count {
+  display: inline;
+  min-height: auto;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
 :root[data-theme="dark"] .tool-meta span,
 :root[data-theme="dark"] .tool-logo {
   color: #d8e6ef;
@@ -755,6 +783,163 @@ h3 {
 .guide-card p {
   color: var(--muted);
   line-height: 1.7;
+}
+
+.tutorial-layout,
+.popular-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.tutorial-list {
+  display: grid;
+  gap: 10px;
+}
+
+.tutorial-tab {
+  display: grid;
+  gap: 5px;
+  width: 100%;
+  min-height: 68px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.tutorial-tab span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.tutorial-tab strong {
+  font-size: 17px;
+}
+
+.tutorial-tab.is-active {
+  border-color: var(--teal);
+  background: rgba(8, 143, 143, 0.1);
+}
+
+.tutorial-detail,
+.admin-panel {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.tutorial-detail h3,
+.admin-panel h3 {
+  font-size: 26px;
+}
+
+.tutorial-detail p,
+.admin-panel p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.tutorial-steps {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+  padding-left: 24px;
+}
+
+.tutorial-steps li {
+  padding-left: 6px;
+  color: #2f3f4d;
+  line-height: 1.65;
+}
+
+.tutorial-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tutorial-meta span,
+.popular-note {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  color: #2f3f4d;
+  background: #eef5f6;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.popular-layout {
+  grid-template-columns: minmax(0, 0.66fr) minmax(260px, 0.34fr);
+}
+
+.popular-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.popular-note {
+  margin: 0;
+  padding: 10px 12px;
+  line-height: 1.5;
+}
+
+.popular-row {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+.popular-rank {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  color: white;
+  background: var(--teal);
+  font-weight: 900;
+}
+
+.popular-row strong,
+.popular-row span {
+  display: block;
+}
+
+.popular-row strong {
+  margin-bottom: 4px;
+  font-size: 18px;
+}
+
+.popular-row span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+:root[data-theme="dark"] .tutorial-tab.is-active {
+  background: rgba(37, 183, 181, 0.16);
+}
+
+:root[data-theme="dark"] .tutorial-steps li,
+:root[data-theme="dark"] .tutorial-meta span,
+:root[data-theme="dark"] .popular-note {
+  color: #d8e6ef;
+  background: #1b2d35;
 }
 
 .compare-item {
@@ -874,7 +1059,9 @@ h3 {
   .scenario-grid,
   .tools-grid,
   .library-grid,
-  .guide-track {
+  .guide-track,
+  .tutorial-layout,
+  .popular-layout {
     grid-template-columns: 1fr;
   }
 
@@ -910,6 +1097,20 @@ h3 {
 
   .library-shell {
     padding: 18px;
+  }
+
+  .tutorial-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .popular-row {
+    grid-template-columns: 48px minmax(0, 1fr);
+  }
+
+  .popular-row .button {
+    grid-column: 1 / -1;
+    justify-content: center;
+    width: 100%;
   }
 }
 
@@ -948,6 +1149,28 @@ h3 {
 
   .filter-chip {
     flex: 1 1 auto;
+  }
+
+  .library-actions .button {
+    flex: 1 1 120px;
+    width: auto;
+  }
+
+  .tutorial-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tutorial-detail,
+  .admin-panel {
+    padding: 22px;
+  }
+
+  .popular-row {
+    grid-template-columns: 1fr;
+  }
+
+  .popular-rank {
+    width: 100%;
   }
 
   .hero-panel {
