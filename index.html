@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LocalSend & Stirling PDF 工具站</title>
+    <meta
+      name="description"
+      content="一个介绍 LocalSend、Stirling PDF、RustDesk、Ollama 等实用开源工具的中文展示网站。"
+    />
+    <title>LocalSend & Stirling PDF 工具展示站</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -13,12 +17,13 @@
         <span>工具展示站</span>
       </a>
       <nav class="nav" aria-label="主导航">
-        <a href="#localsend">LocalSend</a>
-        <a href="#stirling">Stirling PDF</a>
-        <a href="#compare">工作流</a>
+        <a href="#products">工具介绍</a>
+        <a href="#scenarios">使用场景</a>
+        <a href="#more-tools">更多工具</a>
+        <a href="#downloads">下载入口</a>
       </nav>
       <button class="theme-toggle" type="button" aria-label="切换深色模式" data-theme-toggle>
-        <span data-theme-icon>月</span>
+        <span data-theme-icon>暗色</span>
       </button>
     </header>
 
@@ -26,15 +31,17 @@
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow">本地文件流转 + PDF 工作台</p>
-          <h1>把常用工具做成一个清爽的介绍官网</h1>
+          <h1>把常用开源工具做成一个清爽的中文介绍官网</h1>
           <p class="lede">
-            LocalSend 负责局域网文件互传，Stirling PDF 负责合并、压缩、转换和编辑 PDF。这个页面可以当作网页开发练手项目，也能作为你电脑上的工具导航。
+            LocalSend 负责手机、电脑、平板之间快速互传文件；Stirling PDF 负责合并、压缩、转换和编辑
+            PDF。这个页面既可以当作你的第一个网页作品，也能作为电脑上的实用工具导航。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="http://localhost:8080" target="_blank" rel="noreferrer">打开 Stirling PDF</a>
-            <a class="button secondary" href="#products">查看工具</a>
+            <a class="button primary" href="#downloads">查看下载入口</a>
+            <a class="button secondary" href="#products">了解两个主工具</a>
           </div>
         </div>
+
         <div class="hero-panel" aria-label="工具预览">
           <div class="tool-chip">
             <img src="./assets/localsend-logo.png" alt="LocalSend logo" />
@@ -47,16 +54,16 @@
           </div>
           <div class="metric-grid">
             <div><strong>局域网</strong><span>快速传文件</span></div>
-            <div><strong>50+</strong><span>PDF 工具</span></div>
-            <div><strong>本机</strong><span>隐私处理</span></div>
+            <div><strong>50+</strong><span>PDF 处理功能</span></div>
+            <div><strong>本地化</strong><span>隐私更可控</span></div>
           </div>
         </div>
       </section>
 
       <section class="section" id="products">
         <div class="section-heading">
-          <p class="eyebrow">两个工具，两类任务</p>
-          <h2>适合日常学习、办公和课程资料整理</h2>
+          <p class="eyebrow">两个主工具，两类高频任务</p>
+          <h2>适合日常学习、办公、资料整理和个人效率工具箱</h2>
         </div>
 
         <article class="product product-local" id="localsend">
@@ -64,21 +71,23 @@
             <div class="product-title">
               <img src="./assets/localsend-logo.png" alt="" />
               <div>
-                <p class="eyebrow">跨设备传输</p>
+                <p class="eyebrow">跨设备文件传输</p>
                 <h3>LocalSend</h3>
               </div>
             </div>
             <p>
-              在同一个局域网内，把文件、图片、文本从手机发到电脑，或者从电脑发到平板。不需要登录账号，也不依赖第三方云盘。
+              在同一个局域网里，把文件、图片、文本从手机发到电脑，或者从电脑发到平板。不需要登录账号，
+              也不依赖第三方云盘，适合临时传课件、照片、压缩包和截图。
             </p>
             <ul class="feature-list">
-              <li>适合传课程文件、截图、照片和压缩包</li>
-              <li>支持 Windows、Android、iOS、macOS、Linux</li>
-              <li>本地网络传输，速度和隐私都更可控</li>
+              <li>支持 Windows、Android、iOS、macOS、Linux，多设备互传很方便。</li>
+              <li>文件在本地网络内传输，速度和隐私都更容易掌控。</li>
+              <li>没有网盘登录流程，适合课堂、办公室、家庭局域网。</li>
             </ul>
             <div class="inline-actions">
               <button class="button secondary" type="button" data-modal="localsend">查看详情</button>
               <a class="button ghost" href="https://localsend.org" target="_blank" rel="noreferrer">官方网站</a>
+              <a class="button ghost" href="https://github.com/localsend/localsend/releases/latest" target="_blank" rel="noreferrer">下载最新版</a>
             </div>
           </div>
           <div class="product-media localsend-media">
@@ -92,22 +101,25 @@
             <div class="product-title">
               <img src="./assets/stirling-logo.png" alt="" />
               <div>
-                <p class="eyebrow">PDF 处理平台</p>
+                <p class="eyebrow">PDF 本地处理平台</p>
                 <h3>Stirling PDF</h3>
               </div>
             </div>
             <p>
-              在浏览器里处理 PDF：合并、拆分、压缩、转换、签名、打码、OCR。文件可以在本机服务里处理，适合不想把文档上传到陌生网站的场景。
+              在浏览器里处理 PDF：合并、拆分、压缩、转换、签名、打码、OCR。文件可以在本机服务里处理，
+              适合不想把证件、合同、论文上传到陌生网站的场景。
             </p>
             <ul class="feature-list">
-              <li>课程设计、论文、证明材料整理很方便</li>
-              <li>支持网页界面，也能部署成团队工具</li>
-              <li>已经在本机运行：localhost:8080</li>
+              <li>课程资料、论文、证明材料、合同扫描件整理都很合适。</li>
+              <li>可以本机运行，也可以部署成团队内部使用的 PDF 工具。</li>
+              <li>你电脑上已经可以通过 localhost:8080 打开本地服务。</li>
             </ul>
             <div class="inline-actions">
-              <a class="button primary" href="http://localhost:8080" target="_blank" rel="noreferrer">进入 PDF 工具</a>
+              <a class="button primary" href="http://localhost:8080" target="_blank" rel="noreferrer">本机打开 PDF 工具</a>
               <button class="button secondary" type="button" data-modal="stirling">查看详情</button>
+              <a class="button ghost" href="https://github.com/Stirling-Tools/Stirling-PDF" target="_blank" rel="noreferrer">GitHub 项目</a>
             </div>
+            <p class="local-note">提示：localhost 地址只在你自己的电脑上有效，别人访问线上网站时需要自行安装或部署 Stirling PDF。</p>
           </div>
           <div class="product-media">
             <img class="dashboard-shot" src="./assets/stirling-dashboard.png" alt="Stirling PDF 首页截图" />
@@ -115,10 +127,39 @@
         </article>
       </section>
 
+      <section class="section scenarios" id="scenarios">
+        <div class="section-heading">
+          <p class="eyebrow">适合谁用</p>
+          <h2>把工具放进具体场景里，别人一看就知道价值</h2>
+        </div>
+        <div class="scenario-grid">
+          <article class="scenario-card">
+            <span class="scenario-icon">01</span>
+            <h3>学生整理资料</h3>
+            <p>手机拍照、下载课件，再传到电脑合并成 PDF，最后压缩后提交。</p>
+          </article>
+          <article class="scenario-card">
+            <span class="scenario-icon">02</span>
+            <h3>办公文件处理</h3>
+            <p>把合同、表格、证明材料快速合并、拆分、加水印或转格式。</p>
+          </article>
+          <article class="scenario-card">
+            <span class="scenario-icon">03</span>
+            <h3>手机电脑互传</h3>
+            <p>不登录网盘、不扫复杂二维码，在同一 Wi-Fi 下直接互传文件。</p>
+          </article>
+          <article class="scenario-card">
+            <span class="scenario-icon">04</span>
+            <h3>重视隐私的人</h3>
+            <p>敏感文档优先在本地处理，减少上传到陌生在线工具的风险。</p>
+          </article>
+        </div>
+      </section>
+
       <section class="section compare" id="compare">
         <div class="section-heading">
           <p class="eyebrow">怎么搭配用</p>
-          <h2>一个传文件，一个处理文件</h2>
+          <h2>一个传文件，一个处理文件，形成完整工作流</h2>
         </div>
         <div class="compare-grid">
           <div class="compare-item">
@@ -129,7 +170,7 @@
           <div class="compare-item">
             <span class="step">02</span>
             <h3>电脑上整理 PDF</h3>
-            <p>打开 Stirling PDF，对文件进行合并、压缩、转格式或加页码。</p>
+            <p>打开 Stirling PDF，对文件进行合并、压缩、转换格式或加页码。</p>
           </div>
           <div class="compare-item">
             <span class="step">03</span>
@@ -139,20 +180,108 @@
         </div>
       </section>
 
+      <section class="section more-tools" id="more-tools">
+        <div class="section-heading">
+          <p class="eyebrow">更多实用项目</p>
+          <h2>继续扩展后，这个站可以变成你的电脑工具箱</h2>
+        </div>
+        <div class="tools-grid">
+          <article class="tool-card">
+            <span class="tool-badge">远程控制</span>
+            <h3>RustDesk</h3>
+            <p>开源远程桌面工具，适合远程帮别人看电脑、管理自己的设备。</p>
+            <button class="button secondary compact" type="button" data-modal="rustdesk">查看用途</button>
+          </article>
+          <article class="tool-card">
+            <span class="tool-badge">本地 AI</span>
+            <h3>Ollama</h3>
+            <p>在电脑本地运行大模型，适合学习 AI、写作、代码辅助和离线实验。</p>
+            <button class="button secondary compact" type="button" data-modal="ollama">查看用途</button>
+          </article>
+          <article class="tool-card">
+            <span class="tool-badge">AI 网页界面</span>
+            <h3>Open WebUI</h3>
+            <p>给本地大模型配一个类似聊天应用的网页界面，搭配 Ollama 使用很顺手。</p>
+            <button class="button secondary compact" type="button" data-modal="openwebui">查看用途</button>
+          </article>
+          <article class="tool-card">
+            <span class="tool-badge">代码管理</span>
+            <h3>GitHub Desktop</h3>
+            <p>用图形界面管理 Git 仓库，适合刚开始做网页项目和上传作品。</p>
+            <button class="button secondary compact" type="button" data-modal="githubDesktop">查看用途</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section downloads" id="downloads">
+        <div class="section-heading">
+          <p class="eyebrow">下载与项目入口</p>
+          <h2>把常用链接集中到一处，之后维护起来更方便</h2>
+        </div>
+        <div class="download-panel">
+          <div class="download-row">
+            <div>
+              <strong>LocalSend</strong>
+              <span>局域网文件互传</span>
+            </div>
+            <a href="https://localsend.org" target="_blank" rel="noreferrer">官网</a>
+            <a href="https://github.com/localsend/localsend" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://github.com/localsend/localsend/releases/latest" target="_blank" rel="noreferrer">下载</a>
+          </div>
+          <div class="download-row">
+            <div>
+              <strong>Stirling PDF</strong>
+              <span>PDF 合并、压缩、转换</span>
+            </div>
+            <a href="https://www.stirlingpdf.com" target="_blank" rel="noreferrer">官网</a>
+            <a href="https://github.com/Stirling-Tools/Stirling-PDF" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="http://localhost:8080" target="_blank" rel="noreferrer">本机打开</a>
+          </div>
+          <div class="download-row">
+            <div>
+              <strong>RustDesk</strong>
+              <span>远程桌面控制</span>
+            </div>
+            <a href="https://rustdesk.com" target="_blank" rel="noreferrer">官网</a>
+            <a href="https://github.com/rustdesk/rustdesk" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://github.com/rustdesk/rustdesk/releases/latest" target="_blank" rel="noreferrer">下载</a>
+          </div>
+          <div class="download-row">
+            <div>
+              <strong>Ollama</strong>
+              <span>本地大模型运行工具</span>
+            </div>
+            <a href="https://ollama.com" target="_blank" rel="noreferrer">官网</a>
+            <a href="https://github.com/ollama/ollama" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://ollama.com/download" target="_blank" rel="noreferrer">下载</a>
+          </div>
+          <div class="download-row">
+            <div>
+              <strong>Open WebUI</strong>
+              <span>本地 AI 聊天网页界面</span>
+            </div>
+            <a href="https://openwebui.com" target="_blank" rel="noreferrer">官网</a>
+            <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://docs.openwebui.com" target="_blank" rel="noreferrer">文档</a>
+          </div>
+        </div>
+      </section>
+
       <section class="section publish">
         <div class="publish-inner">
-          <p class="eyebrow">下一步作品集方向</p>
-          <h2>可以继续扩展成工具导航站</h2>
+          <p class="eyebrow">作品集方向</p>
+          <h2>下一步可以继续做成“我的实用工具导航站”</h2>
           <p>
-            后续可以加入 RustDesk、Ollama、GitHub Desktop 等工具，变成一个“我的电脑工具箱”网站。现在项目已经具备 GitHub Pages 发布所需的基础文件。
+            这个项目已经具备 GitHub Pages 发布、中文介绍、工具分类、下载入口和弹窗详情。后续可以继续加入
+            Dify、Docker Desktop、VS Code 插件、浏览器扩展等内容，让它逐步变成一个可以展示给别人看的网页作品。
           </p>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>Local tool showcase</span>
-      <span>静态网页项目，可继续改成作品集案例。</span>
+      <span>Local Tool Showcase</span>
+      <span>一个可以继续扩展的静态网页作品，适合放进个人作品集。</span>
     </footer>
 
     <div class="modal" data-modal-root hidden>

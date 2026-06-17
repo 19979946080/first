@@ -43,6 +43,7 @@ body {
     radial-gradient(circle at top left, rgba(8, 143, 143, 0.12), transparent 32rem),
     radial-gradient(circle at 88% 10%, rgba(47, 111, 221, 0.12), transparent 28rem),
     var(--page);
+  overflow-x: hidden;
 }
 
 body.modal-open {
@@ -130,6 +131,16 @@ a {
   padding: 7vh 7vw 9vh;
 }
 
+.hero-copy,
+.hero-panel,
+.product-copy,
+.product-media,
+.scenario-card,
+.tool-card,
+.download-panel {
+  min-width: 0;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--teal-dark);
@@ -149,8 +160,8 @@ p {
 h1 {
   max-width: 760px;
   margin-bottom: 24px;
-  font-size: clamp(42px, 7vw, 84px);
-  line-height: 0.98;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.04;
   letter-spacing: 0;
 }
 
@@ -218,11 +229,17 @@ h3 {
 
 .button.compact {
   margin-top: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
 }
 
 .hero-panel,
 .product,
-.compare-item {
+.compare-item,
+.scenario-card,
+.tool-card,
+.download-panel {
   border: 1px solid rgba(216, 225, 232, 0.9);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.88);
@@ -338,6 +355,15 @@ h3 {
   line-height: 1.75;
 }
 
+.local-note {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-left: 3px solid var(--teal);
+  border-radius: 8px;
+  background: rgba(8, 143, 143, 0.08);
+  font-size: 14px !important;
+}
+
 .feature-list {
   display: grid;
   gap: 12px;
@@ -414,6 +440,112 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+}
+
+.scenario-grid,
+.tools-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.scenario-grid,
+.tools-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.scenario-card,
+.tool-card {
+  padding: 26px;
+  box-shadow: none;
+}
+
+.scenario-icon,
+.tool-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.scenario-icon {
+  width: 42px;
+  height: 34px;
+  color: white;
+  background: var(--teal);
+}
+
+.tool-badge {
+  min-height: 30px;
+  padding: 0 10px;
+  color: var(--teal-dark);
+  background: rgba(8, 143, 143, 0.1);
+}
+
+.scenario-card h3,
+.tool-card h3 {
+  font-size: 22px;
+}
+
+.scenario-card p,
+.tool-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.download-panel {
+  display: grid;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: none;
+}
+
+.download-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(88px, auto));
+  gap: 12px;
+  align-items: center;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.download-row:last-child {
+  border-bottom: 0;
+}
+
+.download-row strong,
+.download-row span {
+  display: block;
+}
+
+.download-row strong {
+  margin-bottom: 4px;
+  font-size: 18px;
+}
+
+.download-row span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.download-row a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--teal-dark);
+  background: var(--paper);
+  font-weight: 800;
+}
+
+.download-row a:hover {
+  border-color: var(--teal);
+  transform: translateY(-1px);
 }
 
 .compare-item {
@@ -529,7 +661,9 @@ h3 {
   .hero,
   .product,
   .product-stirling,
-  .compare-grid {
+  .compare-grid,
+  .scenario-grid,
+  .tools-grid {
     grid-template-columns: 1fr;
   }
 
@@ -554,6 +688,14 @@ h3 {
   .phone-shot {
     width: 128px;
   }
+
+  .download-row {
+    grid-template-columns: 1fr;
+  }
+
+  .download-row a {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 560px) {
@@ -568,6 +710,40 @@ h3 {
   .hero-actions,
   .footer {
     flex-direction: column;
+  }
+
+  h1 {
+    font-size: 34px;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .lede {
+    font-size: 17px;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hero-panel {
+    padding: 18px;
+  }
+
+  .tool-chip {
+    gap: 12px;
+    padding: 14px;
+    font-size: 20px;
+  }
+
+  .tool-chip img {
+    width: 46px;
+    height: 46px;
   }
 
   .metric-grid {
