@@ -65,6 +65,117 @@ const modalData = {
       "适合新手维护作品集和练习项目",
     ],
   },
+  dify: {
+    kicker: "AI 应用搭建",
+    title: "Dify 适合做什么？",
+    body: "Dify 更偏向 AI 应用平台，可以搭建聊天机器人、知识库问答、工作流和 API 服务。",
+    points: [
+      "搭建知识库问答",
+      "制作 AI 工作流",
+      "连接不同模型和工具",
+      "适合进阶 AI 应用项目",
+    ],
+  },
+  vscode: {
+    kicker: "代码编辑器",
+    title: "VS Code 适合做什么？",
+    body: "VS Code 是很常用的代码编辑器，适合网页开发、脚本编写、项目管理和插件扩展。",
+    points: [
+      "写 HTML、CSS、JavaScript",
+      "安装插件提升开发效率",
+      "配合 Git 管理代码",
+      "适合继续维护这个工具站",
+    ],
+  },
+  localsendGuide: {
+    kicker: "安装教程",
+    title: "LocalSend 新手安装路线",
+    body: "LocalSend 的安装很简单，核心是让手机和电脑处在同一个 Wi-Fi 或局域网里。",
+    points: [
+      "电脑端打开 LocalSend 官网或 GitHub Releases 下载 Windows 版本",
+      "手机端在应用商店搜索 LocalSend 并安装",
+      "两台设备连接同一个 Wi-Fi",
+      "打开应用，选择文件，点击附近设备发送",
+    ],
+  },
+  stirlingGuide: {
+    kicker: "安装教程",
+    title: "Stirling PDF 新手安装路线",
+    body: "Stirling PDF 可以用 Java Jar 或 Docker 运行。你电脑上已经准备过 Java，本机运行方式更适合先体验。",
+    points: [
+      "先安装 Java",
+      "下载 Stirling PDF 的 Jar 文件",
+      "用 java -jar Stirling-PDF.jar 启动",
+      "浏览器打开 localhost:8080 使用",
+    ],
+  },
+  rustdeskGuide: {
+    kicker: "安装教程",
+    title: "RustDesk 新手安装路线",
+    body: "RustDesk 的普通使用很简单，双方都安装软件后，通过对方 ID 和临时密码连接。",
+    points: [
+      "从 RustDesk 官网或 GitHub Releases 下载 Windows 版本",
+      "双方电脑都打开 RustDesk",
+      "让对方提供 ID 和临时密码",
+      "输入后连接，得到授权即可远程控制",
+    ],
+  },
+  ollamaGuide: {
+    kicker: "安装教程",
+    title: "Ollama 新手安装路线",
+    body: "Ollama 适合先用一个小模型体验，确认电脑能跑起来后再尝试更大的模型。",
+    points: [
+      "从 ollama.com 下载 Windows 版本",
+      "安装后打开终端",
+      "运行 ollama run qwen2.5:3b 或类似小模型",
+      "模型下载完成后就能在终端聊天",
+    ],
+  },
+  openwebuiGuide: {
+    kicker: "安装教程",
+    title: "Open WebUI 新手安装路线",
+    body: "Open WebUI 通常需要 Docker 或 Python 环境，建议先把 Ollama 跑通，再安装它。",
+    points: [
+      "先确认 Ollama 已经能运行模型",
+      "安装 Docker Desktop",
+      "按 Open WebUI 文档运行 Docker 命令",
+      "浏览器打开本地地址进入聊天界面",
+    ],
+  },
+  githubDesktopGuide: {
+    kicker: "安装教程",
+    title: "GitHub Desktop 发布网页路线",
+    body: "这个网站就是用 GitHub Desktop / Git 推到 GitHub，再用 GitHub Pages 发布的。",
+    points: [
+      "安装 GitHub Desktop 并登录 GitHub",
+      "把本地项目添加为仓库",
+      "Commit 保存改动",
+      "Push 上传到 GitHub",
+      "在仓库 Settings -> Pages 开启网站发布",
+    ],
+  },
+  difyGuide: {
+    kicker: "安装教程",
+    title: "Dify 新手安装路线",
+    body: "Dify 更适合进阶阶段，通常会用 Docker 部署。建议先熟悉 Ollama、Open WebUI 和 GitHub 后再尝试。",
+    points: [
+      "安装 Docker Desktop",
+      "克隆 Dify 官方仓库",
+      "按官方文档启动 docker compose",
+      "浏览器进入本地 Dify 后台创建应用",
+    ],
+  },
+  vscodeGuide: {
+    kicker: "安装教程",
+    title: "VS Code 新手安装路线",
+    body: "VS Code 是维护这个网站最方便的编辑器之一，可以配合 Live Server 插件实时预览网页。",
+    points: [
+      "从 VS Code 官网下载安装",
+      "安装 Chinese Language Pack 中文插件",
+      "安装 Live Server 插件",
+      "打开网站项目文件夹，修改后实时预览",
+    ],
+  },
 };
 
 const root = document.documentElement;
@@ -130,3 +241,48 @@ document.addEventListener("keydown", (event) => {
     closeModal();
   }
 });
+
+const toolCards = Array.from(document.querySelectorAll("[data-tool-card]"));
+const searchInput = document.querySelector("[data-tool-search]");
+const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+const toolCount = document.querySelector("[data-tool-count]");
+const emptyState = document.querySelector("[data-empty-state]");
+let activeFilter = "all";
+
+function normalize(value) {
+  return value.trim().toLowerCase();
+}
+
+function applyToolFilters() {
+  const query = normalize(searchInput?.value || "");
+  let visibleCount = 0;
+
+  toolCards.forEach((card) => {
+    const category = card.dataset.category || "";
+    const haystack = normalize(`${card.dataset.name || ""} ${card.dataset.tags || ""} ${card.textContent || ""}`);
+    const matchesCategory = activeFilter === "all" || category === activeFilter;
+    const matchesQuery = !query || haystack.includes(query);
+    const visible = matchesCategory && matchesQuery;
+    card.hidden = !visible;
+    if (visible) visibleCount += 1;
+  });
+
+  if (toolCount) toolCount.textContent = String(visibleCount);
+  if (emptyState) emptyState.hidden = visibleCount !== 0;
+}
+
+searchInput?.addEventListener("input", applyToolFilters);
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter || "all";
+    filterButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+    applyToolFilters();
+  });
+});
+
+applyToolFilters();

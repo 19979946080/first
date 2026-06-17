@@ -1,6 +1,6 @@
 # Local Tool Showcase
 
-这是一个中文静态网页项目，用来介绍 LocalSend、Stirling PDF、RustDesk、Ollama、Open WebUI 等实用开源工具。
+这是一个中文静态网页项目，用来介绍 LocalSend、Stirling PDF、RustDesk、Ollama、Open WebUI、Dify、VS Code 等实用开源工具。
 
 ## 在线预览
 
@@ -16,6 +16,18 @@ https://19979946080.github.io/first/
 - Ollama：本地大模型运行工具
 - Open WebUI：本地 AI 聊天网页界面
 - GitHub Desktop：图形化 Git 和 GitHub 管理工具
+- Dify：AI 应用和工作流搭建平台
+- VS Code：网页开发和代码编辑器
+
+## 功能亮点
+
+- 工具搜索
+- 分类筛选
+- 推荐指数、上手难度、适合人群
+- 下载入口集合
+- 安装教程弹窗
+- 深色模式
+- 响应式布局，支持手机浏览
 
 ## 本地预览
 
@@ -34,7 +46,7 @@ tool-showcase/
 ## 后续可以继续优化
 
 - 加入更多工具分类
-- 增加真实使用教程
+- 增加独立教程详情页
 - 增加截图轮播
-- 加入搜索和筛选功能
+- 把工具数据拆成 `tools.json`
 - 改造成个人作品集里的项目案例
