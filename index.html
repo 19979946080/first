@@ -34,7 +34,7 @@
           <h1>把常用开源工具做成一个实用的中文导航站</h1>
           <p class="lede">
             从 LocalSend、Stirling PDF 到 RustDesk、Ollama、Open WebUI，这个站把常用工具按场景整理好，
-            提供用途说明、推荐指数、上手难度、下载入口和安装教程。
+            提供用途说明、推荐指数、上手难度、下载入口、安装教程、收藏和本机访问统计。
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#tool-library">进入工具库</a>
@@ -53,9 +53,9 @@
             <span>Stirling PDF</span>
           </div>
           <div class="metric-grid">
-            <div><strong>8 个</strong><span>精选实用工具</span></div>
+            <div><strong data-total-tools>8 个</strong><span>精选实用工具</span></div>
             <div><strong>5 类</strong><span>按场景筛选</span></div>
-            <div><strong>教程</strong><span>新手也能上手</span></div>
+            <div><strong>收藏</strong><span>本机保存偏好</span></div>
           </div>
         </div>
       </section>
@@ -85,8 +85,8 @@
               <li>没有网盘登录流程，适合课堂、办公室、家庭局域网。</li>
             </ul>
             <div class="inline-actions">
-              <button class="button secondary" type="button" data-modal="localsend">查看详情</button>
-              <button class="button secondary" type="button" data-modal="localsendGuide">安装教程</button>
+              <button class="button secondary" type="button" data-modal="localsend" data-track-tool="localsend">查看详情</button>
+              <button class="button secondary" type="button" data-modal="localsendGuide" data-track-tool="localsend">安装教程</button>
               <a class="button ghost" href="https://localsend.org" target="_blank" rel="noreferrer">官方网站</a>
             </div>
           </div>
@@ -116,8 +116,8 @@
             </ul>
             <div class="inline-actions">
               <a class="button primary" href="http://localhost:8080" target="_blank" rel="noreferrer">本机打开 PDF 工具</a>
-              <button class="button secondary" type="button" data-modal="stirling">查看详情</button>
-              <button class="button secondary" type="button" data-modal="stirlingGuide">安装教程</button>
+              <button class="button secondary" type="button" data-modal="stirling" data-track-tool="stirling">查看详情</button>
+              <button class="button secondary" type="button" data-modal="stirlingGuide" data-track-tool="stirling">安装教程</button>
             </div>
             <p class="local-note">提示：localhost 地址只在你自己的电脑上有效，别人访问线上网站时需要自行安装或部署 Stirling PDF。</p>
           </div>
@@ -159,7 +159,7 @@
       <section class="section tool-library" id="tool-library">
         <div class="section-heading">
           <p class="eyebrow">可搜索的工具库</p>
-          <h2>按分类、关键词、难度快速找到合适工具</h2>
+          <h2>工具数据来自 tools.json，后续加工具更容易</h2>
         </div>
 
         <div class="library-shell">
@@ -170,177 +170,21 @@
             </label>
             <div class="filter-row" aria-label="工具分类筛选">
               <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">全部</button>
+              <button class="filter-chip" type="button" data-filter="favorites" aria-pressed="false">已收藏</button>
               <button class="filter-chip" type="button" data-filter="transfer" aria-pressed="false">文件传输</button>
               <button class="filter-chip" type="button" data-filter="pdf" aria-pressed="false">PDF</button>
               <button class="filter-chip" type="button" data-filter="remote" aria-pressed="false">远程控制</button>
               <button class="filter-chip" type="button" data-filter="ai" aria-pressed="false">本地 AI</button>
               <button class="filter-chip" type="button" data-filter="dev" aria-pressed="false">开发工具</button>
             </div>
-            <p class="library-meta"><span data-tool-count>8</span> 个工具可用</p>
+            <div class="stats-row" aria-label="本机统计">
+              <p class="library-meta"><span data-tool-count>0</span> 个工具可见</p>
+              <p class="library-meta">本机访问 <span data-visit-count>0</span> 次</p>
+              <p class="library-meta">已收藏 <span data-favorite-count>0</span> 个</p>
+            </div>
           </div>
 
-          <div class="library-grid">
-            <article class="library-card" data-tool-card data-category="transfer" data-name="LocalSend" data-tags="文件传输 手机电脑互传 局域网 安卓 苹果 Windows">
-              <div class="library-card-top">
-                <img class="tool-logo" src="./assets/localsend-logo.png" alt="" />
-                <div>
-                  <span class="tool-badge">文件传输</span>
-                  <h3>LocalSend</h3>
-                </div>
-              </div>
-              <p>同一 Wi-Fi 下跨设备传文件，不用登录网盘。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★★</span>
-                <span>难度 简单</span>
-                <span>适合 学生 / 办公</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="localsend">详情</button>
-                <button class="button secondary compact" type="button" data-modal="localsendGuide">安装教程</button>
-              </div>
-            </article>
-
-            <article class="library-card" data-tool-card data-category="pdf" data-name="Stirling PDF" data-tags="PDF 合并 压缩 转换 OCR 本地处理">
-              <div class="library-card-top">
-                <img class="tool-logo" src="./assets/stirling-logo.png" alt="" />
-                <div>
-                  <span class="tool-badge">PDF</span>
-                  <h3>Stirling PDF</h3>
-                </div>
-              </div>
-              <p>本地处理 PDF，适合资料整理、证明材料和办公文件。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★★</span>
-                <span>难度 中等</span>
-                <span>适合 办公 / 学习</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="stirling">详情</button>
-                <button class="button secondary compact" type="button" data-modal="stirlingGuide">安装教程</button>
-              </div>
-            </article>
-
-            <article class="library-card" data-tool-card data-category="remote" data-name="RustDesk" data-tags="远程控制 远程桌面 帮别人看电脑">
-              <div class="library-card-top">
-                <span class="tool-logo text-logo">RD</span>
-                <div>
-                  <span class="tool-badge">远程控制</span>
-                  <h3>RustDesk</h3>
-                </div>
-              </div>
-              <p>开源远程桌面工具，适合远程协助和管理自己的电脑。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★☆</span>
-                <span>难度 简单</span>
-                <span>适合 远程协助</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="rustdesk">详情</button>
-                <button class="button secondary compact" type="button" data-modal="rustdeskGuide">安装教程</button>
-              </div>
-            </article>
-
-            <article class="library-card" data-tool-card data-category="ai" data-name="Ollama" data-tags="本地AI 大模型 Llama Qwen 离线">
-              <div class="library-card-top">
-                <span class="tool-logo text-logo">AI</span>
-                <div>
-                  <span class="tool-badge">本地 AI</span>
-                  <h3>Ollama</h3>
-                </div>
-              </div>
-              <p>在本机运行大模型，适合学习 AI、写作和代码辅助。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★★</span>
-                <span>难度 中等</span>
-                <span>适合 AI 爱好者</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="ollama">详情</button>
-                <button class="button secondary compact" type="button" data-modal="ollamaGuide">安装教程</button>
-              </div>
-            </article>
-
-            <article class="library-card" data-tool-card data-category="ai" data-name="Open WebUI" data-tags="AI 聊天网页界面 Ollama 本地模型">
-              <div class="library-card-top">
-                <span class="tool-logo text-logo">UI</span>
-                <div>
-                  <span class="tool-badge">AI 界面</span>
-                  <h3>Open WebUI</h3>
-                </div>
-              </div>
-              <p>给 Ollama 配一个聊天网页界面，更像完整的 AI 应用。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★☆</span>
-                <span>难度 偏难</span>
-                <span>适合 AI 应用</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="openwebui">详情</button>
-                <button class="button secondary compact" type="button" data-modal="openwebuiGuide">安装教程</button>
-              </div>
-            </article>
-
-            <article class="library-card" data-tool-card data-category="dev" data-name="GitHub Desktop" data-tags="Git GitHub 代码管理 上传网页 发布">
-              <div class="library-card-top">
-                <span class="tool-logo text-logo">GH</span>
-                <div>
-                  <span class="tool-badge">代码管理</span>
-                  <h3>GitHub Desktop</h3>
-                </div>
-              </div>
-              <p>图形化管理 Git 仓库，适合新手上传网页作品。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★★</span>
-                <span>难度 简单</span>
-                <span>适合 新手开发</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="githubDesktop">详情</button>
-                <button class="button secondary compact" type="button" data-modal="githubDesktopGuide">安装教程</button>
-              </div>
-            </article>
-
-            <article class="library-card" data-tool-card data-category="ai" data-name="Dify" data-tags="AI 应用 工作流 知识库 聊天机器人">
-              <div class="library-card-top">
-                <span class="tool-logo text-logo">DF</span>
-                <div>
-                  <span class="tool-badge">AI 应用</span>
-                  <h3>Dify</h3>
-                </div>
-              </div>
-              <p>用可视化方式搭建 AI 应用、知识库问答和工作流。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★☆</span>
-                <span>难度 偏难</span>
-                <span>适合 AI 项目</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="dify">详情</button>
-                <button class="button secondary compact" type="button" data-modal="difyGuide">安装教程</button>
-              </div>
-            </article>
-
-            <article class="library-card" data-tool-card data-category="dev" data-name="VS Code" data-tags="编辑器 前端开发 网页开发 插件">
-              <div class="library-card-top">
-                <span class="tool-logo text-logo">VS</span>
-                <div>
-                  <span class="tool-badge">开发工具</span>
-                  <h3>VS Code</h3>
-                </div>
-              </div>
-              <p>写网页、改代码、管理项目都很方便，是前端入门常用编辑器。</p>
-              <div class="tool-meta">
-                <span>推荐 ★★★★★</span>
-                <span>难度 简单</span>
-                <span>适合 网页开发</span>
-              </div>
-              <div class="inline-actions">
-                <button class="button secondary compact" type="button" data-modal="vscode">详情</button>
-                <button class="button secondary compact" type="button" data-modal="vscodeGuide">安装教程</button>
-              </div>
-            </article>
-          </div>
-
+          <div class="library-grid" data-tool-grid aria-live="polite"></div>
           <p class="empty-state" data-empty-state hidden>没有找到匹配的工具，换个关键词试试。</p>
         </div>
       </section>
@@ -379,25 +223,25 @@
             <span class="step">路线 1</span>
             <h3>日常文件效率</h3>
             <p>先安装 LocalSend，再准备 Stirling PDF，用来解决传文件和 PDF 整理。</p>
-            <button class="button secondary compact" type="button" data-modal="localsendGuide">查看 LocalSend 教程</button>
+            <button class="button secondary compact" type="button" data-modal="localsendGuide" data-track-tool="localsend">查看 LocalSend 教程</button>
           </article>
           <article class="guide-card">
             <span class="step">路线 2</span>
             <h3>本地 AI 工作台</h3>
             <p>先安装 Ollama，再安装 Open WebUI，让本机模型有一个好用的聊天界面。</p>
-            <button class="button secondary compact" type="button" data-modal="ollamaGuide">查看 Ollama 教程</button>
+            <button class="button secondary compact" type="button" data-modal="ollamaGuide" data-track-tool="ollama">查看 Ollama 教程</button>
           </article>
           <article class="guide-card">
             <span class="step">路线 3</span>
             <h3>网页项目发布</h3>
             <p>用 VS Code 写网页，用 GitHub Desktop 提交，再通过 GitHub Pages 发布。</p>
-            <button class="button secondary compact" type="button" data-modal="githubDesktopGuide">查看发布教程</button>
+            <button class="button secondary compact" type="button" data-modal="githubDesktopGuide" data-track-tool="github-desktop">查看发布教程</button>
           </article>
           <article class="guide-card">
             <span class="step">路线 4</span>
             <h3>进阶 AI 应用</h3>
             <p>掌握本地 AI 后，再尝试 Dify、知识库、工作流和自动化应用。</p>
-            <button class="button secondary compact" type="button" data-modal="difyGuide">查看 Dify 教程</button>
+            <button class="button secondary compact" type="button" data-modal="difyGuide" data-track-tool="dify">查看 Dify 教程</button>
           </article>
         </div>
       </section>
@@ -405,73 +249,9 @@
       <section class="section downloads" id="downloads">
         <div class="section-heading">
           <p class="eyebrow">下载与项目入口</p>
-          <h2>把常用链接集中到一处，之后维护起来更方便</h2>
+          <h2>下载列表同样由 tools.json 渲染，维护更轻松</h2>
         </div>
-        <div class="download-panel">
-          <div class="download-row">
-            <div>
-              <strong>LocalSend</strong>
-              <span>局域网文件互传</span>
-            </div>
-            <a href="https://localsend.org" target="_blank" rel="noreferrer">官网</a>
-            <a href="https://github.com/localsend/localsend" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://github.com/localsend/localsend/releases/latest" target="_blank" rel="noreferrer">下载</a>
-          </div>
-          <div class="download-row">
-            <div>
-              <strong>Stirling PDF</strong>
-              <span>PDF 合并、压缩、转换</span>
-            </div>
-            <a href="https://www.stirlingpdf.com" target="_blank" rel="noreferrer">官网</a>
-            <a href="https://github.com/Stirling-Tools/Stirling-PDF" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="http://localhost:8080" target="_blank" rel="noreferrer">本机打开</a>
-          </div>
-          <div class="download-row">
-            <div>
-              <strong>RustDesk</strong>
-              <span>远程桌面控制</span>
-            </div>
-            <a href="https://rustdesk.com" target="_blank" rel="noreferrer">官网</a>
-            <a href="https://github.com/rustdesk/rustdesk" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://github.com/rustdesk/rustdesk/releases/latest" target="_blank" rel="noreferrer">下载</a>
-          </div>
-          <div class="download-row">
-            <div>
-              <strong>Ollama</strong>
-              <span>本地大模型运行工具</span>
-            </div>
-            <a href="https://ollama.com" target="_blank" rel="noreferrer">官网</a>
-            <a href="https://github.com/ollama/ollama" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://ollama.com/download" target="_blank" rel="noreferrer">下载</a>
-          </div>
-          <div class="download-row">
-            <div>
-              <strong>Open WebUI</strong>
-              <span>本地 AI 聊天网页界面</span>
-            </div>
-            <a href="https://openwebui.com" target="_blank" rel="noreferrer">官网</a>
-            <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://docs.openwebui.com" target="_blank" rel="noreferrer">文档</a>
-          </div>
-          <div class="download-row">
-            <div>
-              <strong>Dify</strong>
-              <span>AI 应用搭建平台</span>
-            </div>
-            <a href="https://dify.ai" target="_blank" rel="noreferrer">官网</a>
-            <a href="https://github.com/langgenius/dify" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://docs.dify.ai" target="_blank" rel="noreferrer">文档</a>
-          </div>
-          <div class="download-row">
-            <div>
-              <strong>VS Code</strong>
-              <span>代码编辑器</span>
-            </div>
-            <a href="https://code.visualstudio.com" target="_blank" rel="noreferrer">官网</a>
-            <a href="https://code.visualstudio.com/docs" target="_blank" rel="noreferrer">文档</a>
-            <a href="https://code.visualstudio.com/Download" target="_blank" rel="noreferrer">下载</a>
-          </div>
-        </div>
+        <div class="download-panel" data-download-panel></div>
       </section>
 
       <section class="section publish">
@@ -479,8 +259,8 @@
           <p class="eyebrow">作品集方向</p>
           <h2>现在它更像一个真正可用的工具库项目</h2>
           <p>
-            这个项目已经有首页介绍、工具搜索、分类筛选、推荐评分、难度标签、下载入口和安装教程弹窗。
-            后续可以继续把工具数据拆成 JSON 文件，或者加收藏、访问统计、教程详情页，让它变成完整的工具导航产品。
+            工具数据已经拆到 JSON 文件，页面支持搜索筛选、收藏、本机访问统计、推荐评分、难度标签、下载入口和安装教程弹窗。
+            后续可以继续加教程详情页、收藏导出、热门工具排行或后台管理。
           </p>
         </div>
       </section>

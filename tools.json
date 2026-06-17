@@ -1,0 +1,154 @@
+[
+  {
+    "id": "localsend",
+    "name": "LocalSend",
+    "category": "transfer",
+    "categoryLabel": "文件传输",
+    "logo": "./assets/localsend-logo.png",
+    "summary": "同一 Wi-Fi 下跨设备传文件，不用登录网盘。",
+    "rating": 5,
+    "difficulty": "简单",
+    "audience": "学生 / 办公",
+    "tags": ["文件传输", "手机电脑互传", "局域网", "安卓", "苹果", "Windows"],
+    "detailModal": "localsend",
+    "guideModal": "localsendGuide",
+    "links": [
+      { "label": "官网", "url": "https://localsend.org" },
+      { "label": "GitHub", "url": "https://github.com/localsend/localsend" },
+      { "label": "下载", "url": "https://github.com/localsend/localsend/releases/latest" }
+    ]
+  },
+  {
+    "id": "stirling",
+    "name": "Stirling PDF",
+    "category": "pdf",
+    "categoryLabel": "PDF",
+    "logo": "./assets/stirling-logo.png",
+    "summary": "本地处理 PDF，适合资料整理、证明材料和办公文件。",
+    "rating": 5,
+    "difficulty": "中等",
+    "audience": "办公 / 学习",
+    "tags": ["PDF", "合并", "压缩", "转换", "OCR", "本地处理"],
+    "detailModal": "stirling",
+    "guideModal": "stirlingGuide",
+    "links": [
+      { "label": "官网", "url": "https://www.stirlingpdf.com" },
+      { "label": "GitHub", "url": "https://github.com/Stirling-Tools/Stirling-PDF" },
+      { "label": "本机打开", "url": "http://localhost:8080" }
+    ]
+  },
+  {
+    "id": "rustdesk",
+    "name": "RustDesk",
+    "category": "remote",
+    "categoryLabel": "远程控制",
+    "textLogo": "RD",
+    "summary": "开源远程桌面工具，适合远程协助和管理自己的电脑。",
+    "rating": 4,
+    "difficulty": "简单",
+    "audience": "远程协助",
+    "tags": ["远程控制", "远程桌面", "帮别人看电脑"],
+    "detailModal": "rustdesk",
+    "guideModal": "rustdeskGuide",
+    "links": [
+      { "label": "官网", "url": "https://rustdesk.com" },
+      { "label": "GitHub", "url": "https://github.com/rustdesk/rustdesk" },
+      { "label": "下载", "url": "https://github.com/rustdesk/rustdesk/releases/latest" }
+    ]
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "category": "ai",
+    "categoryLabel": "本地 AI",
+    "textLogo": "AI",
+    "summary": "在本机运行大模型，适合学习 AI、写作和代码辅助。",
+    "rating": 5,
+    "difficulty": "中等",
+    "audience": "AI 爱好者",
+    "tags": ["本地AI", "大模型", "Llama", "Qwen", "离线"],
+    "detailModal": "ollama",
+    "guideModal": "ollamaGuide",
+    "links": [
+      { "label": "官网", "url": "https://ollama.com" },
+      { "label": "GitHub", "url": "https://github.com/ollama/ollama" },
+      { "label": "下载", "url": "https://ollama.com/download" }
+    ]
+  },
+  {
+    "id": "open-webui",
+    "name": "Open WebUI",
+    "category": "ai",
+    "categoryLabel": "AI 界面",
+    "textLogo": "UI",
+    "summary": "给 Ollama 配一个聊天网页界面，更像完整的 AI 应用。",
+    "rating": 4,
+    "difficulty": "偏难",
+    "audience": "AI 应用",
+    "tags": ["AI", "聊天网页界面", "Ollama", "本地模型"],
+    "detailModal": "openwebui",
+    "guideModal": "openwebuiGuide",
+    "links": [
+      { "label": "官网", "url": "https://openwebui.com" },
+      { "label": "GitHub", "url": "https://github.com/open-webui/open-webui" },
+      { "label": "文档", "url": "https://docs.openwebui.com" }
+    ]
+  },
+  {
+    "id": "github-desktop",
+    "name": "GitHub Desktop",
+    "category": "dev",
+    "categoryLabel": "代码管理",
+    "textLogo": "GH",
+    "summary": "图形化管理 Git 仓库，适合新手上传网页作品。",
+    "rating": 5,
+    "difficulty": "简单",
+    "audience": "新手开发",
+    "tags": ["Git", "GitHub", "代码管理", "上传网页", "发布"],
+    "detailModal": "githubDesktop",
+    "guideModal": "githubDesktopGuide",
+    "links": [
+      { "label": "官网", "url": "https://desktop.github.com" },
+      { "label": "文档", "url": "https://docs.github.com/desktop" },
+      { "label": "下载", "url": "https://desktop.github.com" }
+    ]
+  },
+  {
+    "id": "dify",
+    "name": "Dify",
+    "category": "ai",
+    "categoryLabel": "AI 应用",
+    "textLogo": "DF",
+    "summary": "用可视化方式搭建 AI 应用、知识库问答和工作流。",
+    "rating": 4,
+    "difficulty": "偏难",
+    "audience": "AI 项目",
+    "tags": ["AI 应用", "工作流", "知识库", "聊天机器人"],
+    "detailModal": "dify",
+    "guideModal": "difyGuide",
+    "links": [
+      { "label": "官网", "url": "https://dify.ai" },
+      { "label": "GitHub", "url": "https://github.com/langgenius/dify" },
+      { "label": "文档", "url": "https://docs.dify.ai" }
+    ]
+  },
+  {
+    "id": "vscode",
+    "name": "VS Code",
+    "category": "dev",
+    "categoryLabel": "开发工具",
+    "textLogo": "VS",
+    "summary": "写网页、改代码、管理项目都很方便，是前端入门常用编辑器。",
+    "rating": 5,
+    "difficulty": "简单",
+    "audience": "网页开发",
+    "tags": ["编辑器", "前端开发", "网页开发", "插件"],
+    "detailModal": "vscode",
+    "guideModal": "vscodeGuide",
+    "links": [
+      { "label": "官网", "url": "https://code.visualstudio.com" },
+      { "label": "文档", "url": "https://code.visualstudio.com/docs" },
+      { "label": "下载", "url": "https://code.visualstudio.com/Download" }
+    ]
+  }
+]

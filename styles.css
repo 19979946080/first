@@ -621,6 +621,12 @@ h3 {
   margin: 0;
 }
 
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
 .library-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -628,6 +634,7 @@ h3 {
 }
 
 .library-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -666,6 +673,28 @@ h3 {
 .library-card h3 {
   margin: 6px 0 0;
   font-size: 22px;
+}
+
+.favorite-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  background: var(--paper);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.favorite-toggle.is-favorite {
+  color: white;
+  border-color: var(--teal);
+  background: var(--teal);
 }
 
 .library-card p {

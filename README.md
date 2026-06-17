@@ -21,8 +21,11 @@ https://19979946080.github.io/first/
 
 ## 功能亮点
 
+- `tools.json` 数据驱动
 - 工具搜索
 - 分类筛选
+- 工具收藏
+- 本机访问统计
 - 推荐指数、上手难度、适合人群
 - 下载入口集合
 - 安装教程弹窗
@@ -40,6 +43,7 @@ tool-showcase/
   index.html
   styles.css
   script.js
+  tools.json
   assets/
 ```
 
@@ -48,5 +52,6 @@ tool-showcase/
 - 加入更多工具分类
 - 增加独立教程详情页
 - 增加截图轮播
-- 把工具数据拆成 `tools.json`
+- 增加收藏导出和导入
+- 增加热门工具排行
 - 改造成个人作品集里的项目案例
