@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalSend & Stirling PDF 工具站</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark">TS</span>
+        <span>工具展示站</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#localsend">LocalSend</a>
+        <a href="#stirling">Stirling PDF</a>
+        <a href="#compare">工作流</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="切换深色模式" data-theme-toggle>
+        <span data-theme-icon>月</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">本地文件流转 + PDF 工作台</p>
+          <h1>把常用工具做成一个清爽的介绍官网</h1>
+          <p class="lede">
+            LocalSend 负责局域网文件互传，Stirling PDF 负责合并、压缩、转换和编辑 PDF。这个页面可以当作网页开发练手项目，也能作为你电脑上的工具导航。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="http://localhost:8080" target="_blank" rel="noreferrer">打开 Stirling PDF</a>
+            <a class="button secondary" href="#products">查看工具</a>
+          </div>
+        </div>
+        <div class="hero-panel" aria-label="工具预览">
+          <div class="tool-chip">
+            <img src="./assets/localsend-logo.png" alt="LocalSend logo" />
+            <span>LocalSend</span>
+          </div>
+          <div class="flow-line"></div>
+          <div class="tool-chip">
+            <img src="./assets/stirling-logo.png" alt="Stirling PDF logo" />
+            <span>Stirling PDF</span>
+          </div>
+          <div class="metric-grid">
+            <div><strong>局域网</strong><span>快速传文件</span></div>
+            <div><strong>50+</strong><span>PDF 工具</span></div>
+            <div><strong>本机</strong><span>隐私处理</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="products">
+        <div class="section-heading">
+          <p class="eyebrow">两个工具，两类任务</p>
+          <h2>适合日常学习、办公和课程资料整理</h2>
+        </div>
+
+        <article class="product product-local" id="localsend">
+          <div class="product-copy">
+            <div class="product-title">
+              <img src="./assets/localsend-logo.png" alt="" />
+              <div>
+                <p class="eyebrow">跨设备传输</p>
+                <h3>LocalSend</h3>
+              </div>
+            </div>
+            <p>
+              在同一个局域网内，把文件、图片、文本从手机发到电脑，或者从电脑发到平板。不需要登录账号，也不依赖第三方云盘。
+            </p>
+            <ul class="feature-list">
+              <li>适合传课程文件、截图、照片和压缩包</li>
+              <li>支持 Windows、Android、iOS、macOS、Linux</li>
+              <li>本地网络传输，速度和隐私都更可控</li>
+            </ul>
+            <div class="inline-actions">
+              <button class="button secondary" type="button" data-modal="localsend">查看详情</button>
+              <a class="button ghost" href="https://localsend.org" target="_blank" rel="noreferrer">官方网站</a>
+            </div>
+          </div>
+          <div class="product-media localsend-media">
+            <img class="phone-shot" src="./assets/localsend-phone.webp" alt="LocalSend 手机界面截图" />
+            <img class="desktop-shot" src="./assets/localsend-pc.webp" alt="LocalSend 电脑界面截图" />
+          </div>
+        </article>
+
+        <article class="product product-stirling" id="stirling">
+          <div class="product-copy">
+            <div class="product-title">
+              <img src="./assets/stirling-logo.png" alt="" />
+              <div>
+                <p class="eyebrow">PDF 处理平台</p>
+                <h3>Stirling PDF</h3>
+              </div>
+            </div>
+            <p>
+              在浏览器里处理 PDF：合并、拆分、压缩、转换、签名、打码、OCR。文件可以在本机服务里处理，适合不想把文档上传到陌生网站的场景。
+            </p>
+            <ul class="feature-list">
+              <li>课程设计、论文、证明材料整理很方便</li>
+              <li>支持网页界面，也能部署成团队工具</li>
+              <li>已经在本机运行：localhost:8080</li>
+            </ul>
+            <div class="inline-actions">
+              <a class="button primary" href="http://localhost:8080" target="_blank" rel="noreferrer">进入 PDF 工具</a>
+              <button class="button secondary" type="button" data-modal="stirling">查看详情</button>
+            </div>
+          </div>
+          <div class="product-media">
+            <img class="dashboard-shot" src="./assets/stirling-dashboard.png" alt="Stirling PDF 首页截图" />
+          </div>
+        </article>
+      </section>
+
+      <section class="section compare" id="compare">
+        <div class="section-heading">
+          <p class="eyebrow">怎么搭配用</p>
+          <h2>一个传文件，一个处理文件</h2>
+        </div>
+        <div class="compare-grid">
+          <div class="compare-item">
+            <span class="step">01</span>
+            <h3>手机拍照或下载资料</h3>
+            <p>用 LocalSend 把图片、PDF、压缩包快速发到电脑。</p>
+          </div>
+          <div class="compare-item">
+            <span class="step">02</span>
+            <h3>电脑上整理 PDF</h3>
+            <p>打开 Stirling PDF，对文件进行合并、压缩、转格式或加页码。</p>
+          </div>
+          <div class="compare-item">
+            <span class="step">03</span>
+            <h3>再发回手机或提交</h3>
+            <p>处理好的文件再通过 LocalSend 发回手机，或者直接上传到系统。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section publish">
+        <div class="publish-inner">
+          <p class="eyebrow">下一步作品集方向</p>
+          <h2>可以继续扩展成工具导航站</h2>
+          <p>
+            后续可以加入 RustDesk、Ollama、GitHub Desktop 等工具，变成一个“我的电脑工具箱”网站。现在项目已经具备 GitHub Pages 发布所需的基础文件。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Local tool showcase</span>
+      <span>静态网页项目，可继续改成作品集案例。</span>
+    </footer>
+
+    <div class="modal" data-modal-root hidden>
+      <div class="modal-backdrop" data-modal-close></div>
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" type="button" aria-label="关闭弹窗" data-modal-close>×</button>
+        <p class="eyebrow" data-modal-kicker>工具详情</p>
+        <h2 id="modal-title" data-modal-title></h2>
+        <p data-modal-body></p>
+        <ul class="modal-list" data-modal-list></ul>
+      </section>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
