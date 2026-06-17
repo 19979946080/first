@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>工具展示站本地后台</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <header class="admin-topbar">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">TS</span>
+        <span>本地后台</span>
+      </a>
+      <nav class="admin-nav" aria-label="后台导航">
+        <a href="./index.html" target="_blank" rel="noreferrer">预览网站</a>
+        <a href="./tools.json" target="_blank" rel="noreferrer">查看 JSON</a>
+      </nav>
+    </header>
+
+    <main class="admin-shell">
+      <section class="admin-hero">
+        <div>
+          <p class="eyebrow">Local Admin</p>
+          <h1>管理工具库数据</h1>
+          <p>这个后台只在本地服务器里使用，保存后会直接写入项目里的 tools.json。</p>
+        </div>
+        <div class="hero-stats">
+          <span><strong data-total-tools>0</strong> 个工具</span>
+          <span><strong data-current-id>-</strong> 当前编辑</span>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="tool-sidebar">
+          <div class="sidebar-head">
+            <label class="search-box" for="admin-search">
+              <span>搜索工具</span>
+              <input id="admin-search" type="search" placeholder="输入名称、分类、标签" data-search />
+            </label>
+            <button class="button primary" type="button" data-new-tool>新建工具</button>
+          </div>
+          <div class="tool-list" data-tool-list aria-live="polite"></div>
+        </aside>
+
+        <section class="editor-panel">
+          <form data-tool-form>
+            <div class="form-head">
+              <div>
+                <p class="eyebrow">Tool Editor</p>
+                <h2 data-form-title>编辑工具</h2>
+              </div>
+              <p class="status" data-status role="status" aria-live="polite"></p>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                <span>工具 ID</span>
+                <input name="id" required pattern="[a-z0-9-]+" placeholder="例如 localsend" />
+              </label>
+              <label>
+                <span>工具名称</span>
+                <input name="name" required placeholder="例如 LocalSend" />
+              </label>
+              <label>
+                <span>分类 ID</span>
+                <input name="category" required placeholder="例如 ai / pdf / dev" />
+              </label>
+              <label>
+                <span>分类名称</span>
+                <input name="categoryLabel" required placeholder="例如 本地 AI" />
+              </label>
+              <label>
+                <span>推荐评分</span>
+                <input name="rating" type="number" min="1" max="5" step="1" required />
+              </label>
+              <label>
+                <span>上手难度</span>
+                <select name="difficulty">
+                  <option>简单</option>
+                  <option>中等</option>
+                  <option>偏难</option>
+                </select>
+              </label>
+              <label>
+                <span>适合人群</span>
+                <input name="audience" placeholder="例如 学生 / 办公" />
+              </label>
+              <label>
+                <span>文字 Logo</span>
+                <input name="textLogo" maxlength="4" placeholder="没有图片时显示，例如 AI" />
+              </label>
+            </div>
+
+            <label class="full-field">
+              <span>图片 Logo 路径</span>
+              <input name="logo" placeholder="例如 ./assets/localsend-logo.png，可留空" />
+            </label>
+
+            <label class="full-field">
+              <span>工具简介</span>
+              <textarea name="summary" required rows="3" placeholder="一句话说明它有什么用"></textarea>
+            </label>
+
+            <label class="full-field">
+              <span>标签</span>
+              <input name="tags" placeholder="用逗号分隔，例如 PDF, OCR, 本地处理" />
+            </label>
+
+            <div class="form-grid">
+              <label>
+                <span>详情弹窗 ID</span>
+                <input name="detailModal" placeholder="例如 localsend" />
+              </label>
+              <label>
+                <span>教程弹窗 ID</span>
+                <input name="guideModal" placeholder="例如 localsendGuide" />
+              </label>
+            </div>
+
+            <section class="links-editor">
+              <div class="section-title">
+                <h3>链接入口</h3>
+                <button class="button secondary" type="button" data-add-link>添加链接</button>
+              </div>
+              <div class="link-list" data-link-list></div>
+            </section>
+
+            <div class="form-actions">
+              <button class="button primary" type="submit">保存工具</button>
+              <button class="button secondary" type="button" data-duplicate-tool>复制当前工具</button>
+              <button class="button danger" type="button" data-delete-tool>删除工具</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>

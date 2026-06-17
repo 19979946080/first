@@ -9,13 +9,29 @@
     "rating": 5,
     "difficulty": "简单",
     "audience": "学生 / 办公",
-    "tags": ["文件传输", "手机电脑互传", "局域网", "安卓", "苹果", "Windows"],
+    "tags": [
+      "文件传输",
+      "手机电脑互传",
+      "局域网",
+      "安卓",
+      "苹果",
+      "Windows"
+    ],
     "detailModal": "localsend",
     "guideModal": "localsendGuide",
     "links": [
-      { "label": "官网", "url": "https://localsend.org" },
-      { "label": "GitHub", "url": "https://github.com/localsend/localsend" },
-      { "label": "下载", "url": "https://github.com/localsend/localsend/releases/latest" }
+      {
+        "label": "官网",
+        "url": "https://localsend.org"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/localsend/localsend"
+      },
+      {
+        "label": "下载",
+        "url": "https://github.com/localsend/localsend/releases/latest"
+      }
     ]
   },
   {
@@ -28,13 +44,29 @@
     "rating": 5,
     "difficulty": "中等",
     "audience": "办公 / 学习",
-    "tags": ["PDF", "合并", "压缩", "转换", "OCR", "本地处理"],
+    "tags": [
+      "PDF",
+      "合并",
+      "压缩",
+      "转换",
+      "OCR",
+      "本地处理"
+    ],
     "detailModal": "stirling",
     "guideModal": "stirlingGuide",
     "links": [
-      { "label": "官网", "url": "https://www.stirlingpdf.com" },
-      { "label": "GitHub", "url": "https://github.com/Stirling-Tools/Stirling-PDF" },
-      { "label": "本机打开", "url": "http://localhost:8080" }
+      {
+        "label": "官网",
+        "url": "https://www.stirlingpdf.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Stirling-Tools/Stirling-PDF"
+      },
+      {
+        "label": "本机打开",
+        "url": "http://localhost:8080"
+      }
     ]
   },
   {
@@ -47,13 +79,26 @@
     "rating": 4,
     "difficulty": "简单",
     "audience": "远程协助",
-    "tags": ["远程控制", "远程桌面", "帮别人看电脑"],
+    "tags": [
+      "远程控制",
+      "远程桌面",
+      "帮别人看电脑"
+    ],
     "detailModal": "rustdesk",
     "guideModal": "rustdeskGuide",
     "links": [
-      { "label": "官网", "url": "https://rustdesk.com" },
-      { "label": "GitHub", "url": "https://github.com/rustdesk/rustdesk" },
-      { "label": "下载", "url": "https://github.com/rustdesk/rustdesk/releases/latest" }
+      {
+        "label": "官网",
+        "url": "https://rustdesk.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/rustdesk/rustdesk"
+      },
+      {
+        "label": "下载",
+        "url": "https://github.com/rustdesk/rustdesk/releases/latest"
+      }
     ]
   },
   {
@@ -66,13 +111,28 @@
     "rating": 5,
     "difficulty": "中等",
     "audience": "AI 爱好者",
-    "tags": ["本地AI", "大模型", "Llama", "Qwen", "离线"],
+    "tags": [
+      "本地AI",
+      "大模型",
+      "Llama",
+      "Qwen",
+      "离线"
+    ],
     "detailModal": "ollama",
     "guideModal": "ollamaGuide",
     "links": [
-      { "label": "官网", "url": "https://ollama.com" },
-      { "label": "GitHub", "url": "https://github.com/ollama/ollama" },
-      { "label": "下载", "url": "https://ollama.com/download" }
+      {
+        "label": "官网",
+        "url": "https://ollama.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/ollama/ollama"
+      },
+      {
+        "label": "下载",
+        "url": "https://ollama.com/download"
+      }
     ]
   },
   {
@@ -85,13 +145,27 @@
     "rating": 4,
     "difficulty": "偏难",
     "audience": "AI 应用",
-    "tags": ["AI", "聊天网页界面", "Ollama", "本地模型"],
+    "tags": [
+      "AI",
+      "聊天网页界面",
+      "Ollama",
+      "本地模型"
+    ],
     "detailModal": "openwebui",
     "guideModal": "openwebuiGuide",
     "links": [
-      { "label": "官网", "url": "https://openwebui.com" },
-      { "label": "GitHub", "url": "https://github.com/open-webui/open-webui" },
-      { "label": "文档", "url": "https://docs.openwebui.com" }
+      {
+        "label": "官网",
+        "url": "https://openwebui.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/open-webui/open-webui"
+      },
+      {
+        "label": "文档",
+        "url": "https://docs.openwebui.com"
+      }
     ]
   },
   {
@@ -104,13 +178,28 @@
     "rating": 5,
     "difficulty": "简单",
     "audience": "新手开发",
-    "tags": ["Git", "GitHub", "代码管理", "上传网页", "发布"],
+    "tags": [
+      "Git",
+      "GitHub",
+      "代码管理",
+      "上传网页",
+      "发布"
+    ],
     "detailModal": "githubDesktop",
     "guideModal": "githubDesktopGuide",
     "links": [
-      { "label": "官网", "url": "https://desktop.github.com" },
-      { "label": "文档", "url": "https://docs.github.com/desktop" },
-      { "label": "下载", "url": "https://desktop.github.com" }
+      {
+        "label": "官网",
+        "url": "https://desktop.github.com"
+      },
+      {
+        "label": "文档",
+        "url": "https://docs.github.com/desktop"
+      },
+      {
+        "label": "下载",
+        "url": "https://desktop.github.com"
+      }
     ]
   },
   {
@@ -123,13 +212,27 @@
     "rating": 4,
     "difficulty": "偏难",
     "audience": "AI 项目",
-    "tags": ["AI 应用", "工作流", "知识库", "聊天机器人"],
+    "tags": [
+      "AI 应用",
+      "工作流",
+      "知识库",
+      "聊天机器人"
+    ],
     "detailModal": "dify",
     "guideModal": "difyGuide",
     "links": [
-      { "label": "官网", "url": "https://dify.ai" },
-      { "label": "GitHub", "url": "https://github.com/langgenius/dify" },
-      { "label": "文档", "url": "https://docs.dify.ai" }
+      {
+        "label": "官网",
+        "url": "https://dify.ai"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/langgenius/dify"
+      },
+      {
+        "label": "文档",
+        "url": "https://docs.dify.ai"
+      }
     ]
   },
   {
@@ -142,13 +245,27 @@
     "rating": 5,
     "difficulty": "简单",
     "audience": "网页开发",
-    "tags": ["编辑器", "前端开发", "网页开发", "插件"],
+    "tags": [
+      "编辑器",
+      "前端开发",
+      "网页开发",
+      "插件"
+    ],
     "detailModal": "vscode",
     "guideModal": "vscodeGuide",
     "links": [
-      { "label": "官网", "url": "https://code.visualstudio.com" },
-      { "label": "文档", "url": "https://code.visualstudio.com/docs" },
-      { "label": "下载", "url": "https://code.visualstudio.com/Download" }
+      {
+        "label": "官网",
+        "url": "https://code.visualstudio.com"
+      },
+      {
+        "label": "文档",
+        "url": "https://code.visualstudio.com/docs"
+      },
+      {
+        "label": "下载",
+        "url": "https://code.visualstudio.com/Download"
+      }
     ]
   }
 ]

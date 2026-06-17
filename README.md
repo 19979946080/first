@@ -33,12 +33,27 @@ https://19979946080.github.io/first/
 - 教程详情区域
 - 安装教程弹窗
 - 轻量维护面板，方便查看 `tools.json`
+- 本地后台版，可用表单维护工具数据并写回 `tools.json`
 - 深色模式
 - 响应式布局，支持手机浏览
 
 ## 本地预览
 
 直接打开 `index.html` 即可。
+
+如果要使用本地后台，需要启动本地服务器：
+
+```bash
+node local-admin-server.js
+```
+
+启动后打开：
+
+```text
+http://127.0.0.1:5178/admin.html
+```
+
+后台可以添加、编辑、复制、删除工具，并把数据保存回 `tools.json`。这个后台只适合本地使用，GitHub Pages 线上静态网站不能直接写文件。
 
 ## 文件结构
 
@@ -47,6 +62,10 @@ tool-showcase/
   index.html
   styles.css
   script.js
+  admin.html
+  admin.css
+  admin.js
+  local-admin-server.js
   tools.json
   assets/
 ```
